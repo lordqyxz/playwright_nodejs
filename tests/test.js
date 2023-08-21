@@ -1,0 +1,1 @@
+const result = "Hello World!"
