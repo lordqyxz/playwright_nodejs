@@ -1,8 +1,13 @@
 from pathlib import Path
+from unittest import TestCase
 
 from playwright_nodejs import Nodejs
 
-js = "console.log(result)"
 
-re = Nodejs(source=Path('test.js')).call(js).exec()
-print(re)
+class TestNodejs(TestCase):
+    def test_nodejs(self):
+        source = Path('test.js')
+        js = "console.log(result)"
+        re = Nodejs(source=source).call(js).exec()
+        print(re)
+        self.assertIn('Hello World!', re)
